@@ -1,1 +1,0 @@
-### Templet for General Deep Learning Project
