@@ -57,7 +57,7 @@ class Res_block(nn.Module):
                 nn.Conv2d(dim_out, dim_out, (k, k), stride=1, padding=k//2, bias=False), 
                 nn.BatchNorm2d(dim_out))
         
-        self.eq_channel = nn.Conv2d(dim_in, dim_out, (1, 1), stride=1)
+        self.eq_channel = nn.Conv2d(dim_in, dim_out, (1, 1), stride=1, bias=False)
         self.eq_size_up = nn.Upsample(scale_factor=1/down, mode='bilinear', align_corners=True)
         self.eq_size_down = nn.MaxPool2d(kernel_size=2, stride=2)
         
