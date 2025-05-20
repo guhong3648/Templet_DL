@@ -24,7 +24,16 @@ class NoneBlock(nn.Module):
     
     def forward(self, x):
         return x
-    
+
+class BatchNormSeq(nn.Module):
+    def __init__(self, dim):
+        super().__init__()
+        self.norm = nn.BatchNorm1d(dim)
+        
+    def forward(self, x):
+        B, S, D = x.shape
+        return self.norm(x.reshape(B*S, D)).reshape(B, S, D)
+
 class Res_block(nn.Module):
     def __init__(self, dim_in, dim_out, k=3, dr=1, down=1, act=nn.SiLU()):
         super().__init__()
