@@ -8,7 +8,7 @@ class ResNet(nn.Module):
         super().__init__()
         self.shape = shape
         self.encoder_1 = nn.Sequential(
-            nn.Conv2d(dim_in, dim_base*1, (7, 7), stride=2, padding=7//2), 
+            nn.Conv2d(dim_in, dim_base*1, (7, 7), stride=2, padding=7//2, bias=False), 
             nn.BatchNorm2d(dim_base*1), 
             nn.ReLU(), 
             # Res_block(dim_base*1, dim_base*1), 
